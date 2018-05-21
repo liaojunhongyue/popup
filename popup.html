@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>弹窗插件</title>
+	<link rel="stylesheet" type="text/css" href="./css/popup.css">
+	<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="./js/popup.js"></script>
+</head>
+<body>
+<h1>弹窗</h1>
+<p>为了按钮美观，编辑了一下按钮样式，正式使用时可删除按钮样式</p>
+<h2>普通信息弹窗</h2>
+<input type="button" class="button-style" value="普通信息弹窗（弹窗不能自动隐藏）" id="popupA" />
+<script type="text/javascript">
+	$('#popupA').click(function(){
+		var popup = new Popup({
+			'type': 'info',
+			'title': '提示信息',
+			'text': '此弹窗为普通信息弹窗，需点击关闭按钮进行关闭'
+		});
+	})
+</script>
+<input type="button" class="button-style" value="普通信息弹窗（弹窗可以自动隐藏）" id="popupB" />
+<script type="text/javascript">
+	$('#popupB').click(function(){
+		var popup = new Popup({
+			'type': 'info',
+			'title': '提示信息',
+			'text': '此弹窗为普通信息弹窗，2秒钟之后自动关闭',
+			'color': '#fff',
+			'bgcolor': '#213bfd',
+			'autohide': true,
+			'showtime': 2000
+		});
+	})
+</script>
+<input type="button" class="button-style" value="带回调函数的普通信息弹窗（点击关闭按钮调用回调函数）" id="popupC" />
+<script type="text/javascript">
+	$('#popupC').click(function(){
+		var popup = new Popup({
+			'type': 'info',
+			'title': '提示信息',
+			'text': '点击关闭按钮后，可调用回调函数',
+			'closeCallBack': function(){
+				alert('调用回调函数');
+			}
+		})
+	})
+</script>
+<input type="button" class="button-style" value="设置了具体宽高的普通信息弹窗" id="popupD" />
+<script type="text/javascript">
+	$('#popupD').click(function(){
+		var popup = new Popup({
+			'type': 'info',
+			'title': '提示信息',
+			'text': '设置了具体宽高的普通信息弹窗，有具体的宽高，但css中设置了弹窗的最小宽度和最小高度，如果设置的宽高小于最小宽高，将按照最小宽高显示',
+			'width': '350px',
+			'height': '200px'
+		})
+	})
+</script>
+<h2>信息确认弹窗</h2>
+<input type="button" class="button-style" value="带有确认按钮的信息确认弹窗" id="popupE" />
+<script type="text/javascript">
+	$('#popupE').click(function(){
+		var popup = new Popup({
+			'type': 'submit',
+			'title': '请您确认',
+			'text': '将确认的具体信息填写在此处'
+		})
+	})
+</script>
+<input type="button" class="button-style" value="带有确认和取消两个按钮的信息确认弹窗" id="popupF" />
+<script type="text/javascript">
+	$('#popupF').click(function(){
+		var popup = new Popup({
+			'type': 'submit',
+			'title': '确认或取消',
+			'text': '带有确认或取消两个按钮的信息确认弹窗',
+			'cancelbutton': true
+		})
+	})
+</script>
+<input type="button" class="button-style" value="可配置按钮样式及文字" id="popupG" />
+<script type="text/javascript">
+	$('#popupG').click(function(){
+		var popup = new Popup({
+			'type': 'submit',
+			'title': '样式及文字',
+			'text': '可配置按钮的样式及文字的弹窗',
+			'cancelbutton': true,
+			'submitvalue': '同意',
+			'submitcolor': '#fff',
+			'submitbgcolor': '#0088cc',
+			'submitbordercolor': '#007fbe',
+			'cancelvalue': '不同意',
+			'cancelcolor': '#0088cc',
+			'cancelbgcolor': '#fff',
+			'cancelbordercolor': '#0088cc'
+		})
+	})
+</script>
+<input type="button" class="button-style" value="带有回调函数的信息确认弹窗" id="popupH" />
+<script type="text/javascript">
+	$('#popupH').click(function(){
+		var popup = new Popup({
+			'type': 'submit',
+			'title': '回调函数',
+			'text': '带有回调函数的信息确认弹窗',
+			'cancelbutton': true,
+			'closeCallBack': function(){
+				alert('点击了关闭')
+			},
+			'submitCallBack': function(){
+				alert('点击了确认')
+			}
+		})
+	})
+</script>
+</body>
+</html>
